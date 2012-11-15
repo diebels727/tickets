@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'pry'
 
-def scan(target_uri,timeout=5,&block)
+def scan(target_uri,timeout=0.1,&block)
   next_uri = URI.parse(target_uri).read
   while true do
     last_uri = next_uri
@@ -21,8 +21,7 @@ def scan(target_uri,timeout=5,&block)
   end
 end
 
-# target_uri = 'http://www.shmoocon.org/registration'
-target_uri = 'http://localhost/~jonathanquigg/index.html'
+target_uri = ''
 
 scan(target_uri) do |last_string,next_string|
   puts "Tick."
